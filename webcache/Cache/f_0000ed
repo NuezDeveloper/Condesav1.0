@@ -1,0 +1,716 @@
+<!DOCTYPE html>
+<html>
+<head lang="es">
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Inventario</title>
+	<link rel="stylesheet" href="./css/font-awesome.min.css">
+	<link rel="stylesheet" type="text/css" href="./css/stylesheet.css">
+	<link rel="stylesheet" type="text/css" href="./css/listas.css">
+	</head>
+<body>
+	<div id="instrucciones">
+</div>
+	<div class="izq">
+		<div class="logo">
+
+		</div>
+		<form class="" action="./php/agregarProdClaveinv.php" method="POST">
+			<fieldset style="margin-left:-20px;margin-top:-14px;">
+				<input type="search" name="clave" placeholder="Buscar">
+			</fieldset>
+			<fieldset style="display:none;">
+				<input type="submit" value="">
+			</fieldset>
+		</form>
+		<div>
+			<ul id="menu">
+				<li><input type='checkbox' name='list' id='nivel1-1'><label for='nivel1-1'>Pizzas</label><ul class='interior'>
+											<li><a href='inventario.php?id=pMexicana&clave=1&mesa=0 'name='1'>Mexicana</a>
+											</li>
+										</ul><ul class='interior'>
+											<li><a href='inventario.php?id=pCondesa&clave=4&mesa=0 'name='4'>La Condesa</a>
+											</li>
+										</ul><ul class='interior'>
+											<li><a href='inventario.php?id=pEspecial&clave=5&mesa=0 'name='5'>Especial</a>
+											</li>
+										</ul><ul class='interior'>
+											<li><a href='inventario.php?id=pCasa&clave=6&mesa=0 'name='6'>  casera</a>
+											</li>
+										</ul><ul class='interior'>
+											<li><a href='inventario.php?id=pAmericana&clave=11&mesa=0 'name='11'>Americana</a>
+											</li>
+										</ul></li><li><input type='checkbox' name='list' id='nivel1-2'><label for='nivel1-2'>Pastas</label><ul class='interior'>
+											<li><a href='inventario.php?id=pastaAl&clave=7&mesa=0 'name='7'>Pasta Alfreado</a>
+											</li>
+										</ul><ul class='interior'>
+											<li><a href='inventario.php?id=pastaCasa&clave=8&mesa=0 'name='8'>Pasta Casa</a>
+											</li>
+										</ul></li><li><input type='checkbox' name='list' id='nivel1-3'><label for='nivel1-3'>Ensaladas</label><ul class='interior'>
+											<li><a href='inventario.php?id=ensManzana&clave=3&mesa=0 'name='3'>Ensalada Manzana</a>
+											</li>
+										</ul></li><li><input type='checkbox' name='list' id='nivel1-4'><label for='nivel1-4'>Bebidas</label><ul class='interior'>
+											<li><a href='inventario.php?id=aguaroja&clave=2&mesa=0 'name='2'>Frutos Rojos</a>
+											</li>
+										</ul><ul class='interior'>
+											<li><a href='inventario.php?id=coca&clave=9&mesa=0 'name='9'>Coca-Cola</a>
+											</li>
+										</ul><ul class='interior'>
+											<li><a href='inventario.php?id=fanta&clave=10&mesa=0 'name='10'>Fanta</a>
+											</li>
+										</ul></li><li><input type='checkbox' name='list' id='nivel1-5'><label for='nivel1-5'>Postres</label></li><li><input type='checkbox' name='list' id='nivel1-6'><label for='nivel1-6'>Entradas</label></li><li><input type='checkbox' name='list' id='nivel1-7'><label for='nivel1-7'>Otro</label><ul class='interior'>
+											<li><a href='inventario.php?id=xd&clave=12&mesa=0 'name='12'>Test</a>
+											</li>
+										</ul></li>			</ul>
+		</div>
+	</div>
+	<nav id="header">
+	  <ul>
+	    <li><a href="./ordenes.php?id=0&clave=0&mesa=0">Órdenes</a></li>
+	    <li style="background-color: #212121; height: 25px;padding-top:5px; border-top-right-radius: 10px; border-top-left-radius: 10px; margin-left: -5px;"><a href="" style="font-weight: bold; color: white;">Inventario</a></li>
+	    <li><a href="./ventas.php?id=0">Ventas</a></li>
+	    <li><a href="./cortes.php?fecha=CURDATE()">Corte</a></li>
+	    <li><a href="./usuarios.php?id=0">Personal</a></li>
+	    <li><a href="" id="mostrarSesion" onmouseover="show()">Sesión</a></li>
+	  </ul>
+		<div id="sesion" onmouseover="show()" onmouseout="unshow()">
+  <ul>
+    <li><a>Cerrar sesión</a></li>
+    <li><a>Cerrar sistema</a></li>
+    <li><a>Hacer corte</a></li>
+  </ul>
+</div>
+	</nav>
+	<div class="miniheader" style="background-color: #212121; height: 180px; margin-top: -120px;">
+				<a href="./inventario.php?id=0&clave=0&mesa=0">Ver todos los ingredientes</a>
+	</div>
+	<div id="container">
+				<div style="height: 70px;"></div>
+		<hr>
+		<style media="screen">
+		#btnagregarop{
+			width: 50px;
+			height: 50px;
+			color: white;
+			position: absolute;
+			bottom: 53%;
+			right: 100px;
+			border-radius: 50%;
+			background-color: gray;
+			text-align: center;
+			font-size: 2rem;
+			line-height: 1.7;
+			cursor: pointer;
+		}
+		#alertaop{
+			width: 14%;
+	    min-height: 200px;
+	    box-shadow: 0px 0px 24px 1px rgba(186,186,186,1);
+	    background: white;
+	    left: 74%;
+	    top: 50px;
+	    position: absolute;
+	    z-index: 12;
+	    display: none;
+		}
+		#alertaop h4{
+			text-align: center;
+			font-size: 1.5rem;
+			padding-top: 10px;
+			margin-left: 20%;
+		}
+		#alertaop #cerrarop{
+			width: 25px;
+			height: 25px;
+			background: #ef2c2c;
+			color:white;
+			border: none;
+			display: block;
+			float: right;
+			border-radius: 50%;
+			margin-right: -10px;
+			margin-top: -10px;
+			cursor: pointer;
+		}
+		.btninv{
+			margin-top: 5%;
+			margin-left: 35%;
+			background-color: #1d1d1d;
+		}
+		</style>
+		<button id="refresh"></button>
+		<div id="modificar">
+			<button id="cerrarMod">
+				<i class="fa fa-times"></i>
+			</button>
+
+			<h4>Modificar</h4>
+			<button id="modificarProducto">Producto</button>
+			<div id="panelModProd">
+		<button id="cerrarModProd">
+			<i class="fa fa-times"></i>
+		</button>
+
+		<h4>Modificar Producto</h4>
+		<form action="../php/modificarproducto.php" method="POST">
+			Selecciona un producto para modificar		</form>
+
+	</div>
+			<button id="modificarCategoria">Categoría</button>
+			<div id="panelModCat">
+		<button id="cerrarModCat">
+			<i class="fa fa-times"></i>
+		</button>
+		<h4>Modificar Categoría</h4>
+		<form action="../php/insacor.php" method="POST" enctype="multipart/form-data">
+			<fieldset>
+				<label>Nombre</label><br>
+				<input type="text" name="nom" >
+			</fieldset>
+			<fieldset>
+				<label>Imagen</label><br>
+				<input type="file" name="imagen">
+			</fieldset>
+			<fieldset>
+				<button type="submit" class="btn">Modificar</button>
+			</fieldset>
+		</form>
+	</div>
+	<button type="button" id="btnmodificar" name="button">Ingrediente</button>
+		</div>
+			</div>
+
+
+
+	<div id="btnagregarop">
+	<i class="fa fa-plus"></i>
+	</div>
+	<div id="alertaop">
+		<button id="cerrarop">
+			<i class="fa fa-times"></i>
+		</button>
+
+		<h4>Agregar</h4>
+		<button type="button" id="btnagregar" class="btninv" style="margin-top: 5%;margin-left: 25%;" name="button">Producto</button>
+		<button type="button" id="btnagregarCat" class="btninv" style="margin-top: 5%;margin-left: 25%;" name="button">Categoría</button>
+		<button type="button" id="btnagregarIn" class="btninv" style="margin-top: 5%;margin-left: 25%;" name="button">Ingrediente</button>
+	</div>
+
+	<div id="alerta22">
+		<button id="cerrar22">
+			<i class="fa fa-times"></i>
+		</button>
+
+		<h4>Agregar Ingredientes</h4>
+		<form action="./php/insIng.php" method="POST" enctype="multipart/form-data">
+			<fieldset style="display:none;">
+				<label>Ingrediente</label><br>
+				<input type="text" name="clave" value=0>
+			</fieldset>
+			<fieldset>
+				<label>Ingrediente</label><br>
+				<select name="ing" style="font-size:20px;padding: 5px 8px;width: 100%;height:30px;border: none;box-shadow: none;background: transparent;background-image: none;-webkit-appearance: none;">
+					<option value='Tocino'>Tocino</option><option value='Cebolla morada'>Cebolla morada</option><option value='Tomate deshidratado'>Tomate deshidratado</option><option value='Cebolla caramelizada'>Cebolla caramelizada</option><option value='Aceituna negra'>Aceituna negra</option><option value='Camarón'>Camarón</option>				</select>
+			</fieldset>
+			<fieldset>
+				<label>Cantidad en gramos</label>
+				<input type="number" name="cantidad">
+			</fieldset>
+			<fieldset>
+				<button type="submit" class="btn">Agregar</button>
+			</fieldset>
+		</form>
+	</div>
+
+	<div id="alerta">
+		<button id="cerrar">
+			<i class="fa fa-times"></i>
+		</button>
+
+		<h4>Agregar Producto</h4>
+		<form action="./php/insProd.php" method="POST" enctype="multipart/form-data">
+			<fieldset>
+				<label>Clave</label><br>
+				<input type="text" name="clave" >
+			</fieldset>
+			<fieldset>
+				<label>Nombre</label><br>
+				<input type="text" name="nom" >
+			</fieldset>
+			<fieldset>
+				<label>Costo</label><br>
+				<input type="number" name="costo" >
+			</fieldset>
+			<fieldset>
+				<label>Precio</label><br>
+				<input type="number" name="precio" >
+			</fieldset>
+			<fieldset>
+				<label>Stock</label><br>
+				<input type="number" name="stock">
+			</fieldset>
+			<fieldset>
+				<label>Descripcion</label><br>
+				<input type="text" name="desc">
+			</fieldset>
+			<fieldset>
+				<label>Categoria</label><br>
+				<select name="cat" style="font-size:20px;padding: 5px 8px;width: 100%;height:30px;border: none;box-shadow: none;background: transparent;background-image: none;-webkit-appearance: none;">
+					<option value='Pizzas'>Pizzas</option><option value='Pastas'>Pastas</option><option value='Ensaladas'>Ensaladas</option><option value='Bebidas'>Bebidas</option><option value='Postres'>Postres</option><option value='Entradas'>Entradas</option><option value='Otro'>Otro</option>				</select>
+			</fieldset>
+			<fieldset>
+				<button type="submit" class="btn">Insertar</button>
+			</fieldset>
+		</form>
+	</div>
+
+		<div id="alertaI">
+			<button id="cerrarI">
+				<i class="fa fa-times"></i>
+			</button>
+			<h4>Agregar ingrediente a inventario</h4>
+			<form action="./php/insInv.php" method="POST" enctype="multipart/form-data">
+				<fieldset>
+					<label>Ingrediente</label><br>
+					<input type="text" name="ing" >
+				</fieldset>
+				<fieldset>
+					<label>Cantidad en gramos</label>
+					<input type="number" name="can">
+				</fieldset>
+				<fieldset>
+					<button type="submit" class="btn">Insertar</button>
+				</fieldset>
+			</form>
+		</div>
+
+		<div id="alertamod">
+			<button id="cerrarmod">
+				<i class="fa fa-times"></i>
+			</button>
+			<h4>Modificar Ingrediente</h4>
+			<form action="../php/inscat.php" method="POST" enctype="multipart/form-data">
+				<fieldset>
+					<select class="" name="ing" style='font-size:20px;padding: 5px 8px;width: 100%;height:30px;border: none;box-shadow: none;background: transparent;background-image: none;-webkit-appearance: none;'>
+						<option>Tocino</option><option>Cebolla morada</option><option>Tomate deshidratado</option><option>Cebolla caramelizada</option><option>Aceituna negra</option><option>Camarón</option>					</select>
+				</fieldset>
+				<fieldset>
+					<label>Nombre</label><br>
+					<input type="text" name="nom" >
+				</fieldset>
+				<fieldset>
+					<label>Cantidad</label><br>
+					<input type="number" name="cant">
+				</fieldset>
+				<fieldset>
+					<button type="submit" class="btn">Insertar</button>
+				</fieldset>
+			</form>
+		</div>
+
+
+	<div id="alertaCat">
+		<button id="cerrarCat">
+			<i class="fa fa-times"></i>
+		</button>
+		<h4>Agregar Categoría</h4>
+		<form action="../php/inscat.php" method="POST" enctype="multipart/form-data">
+			<fieldset>
+				<label>Nombre</label><br>
+				<input type="text" name="nom" >
+			</fieldset>
+			<fieldset>
+				<label>Imagen</label><br>
+				<input type="file" name="imagen">
+			</fieldset>
+			<fieldset>
+				<button type="submit" class="btn">Insertar</button>
+			</fieldset>
+		</form>
+	</div>
+	<div id="tabla" style="margin-left:50%;">
+		<table class="flat-table">
+			<tbody>
+				<tr>
+					<th>Ingrediente</th>
+					<th>Cantidad</th>
+					<th>Modificar</th>
+				</tr>
+				<tr onclick='alert(this.getElementsByTagName('td')[0].innerHTML);alert(this.innerHTML);'>
+										<td>Tocino</td>
+										<td>1500gr</td>
+										<td style='padding:0px;'>
+										<form action='./php/borrarIngre.php' method='POST'>
+											<fieldset style='display: none;'>
+												<input type='text' name='bi' value=4>
+											</fieldset>
+											<fieldset style='display: none;'>
+												<input type='text' name='biip' value='Tocino'>
+											</fieldset>
+											<fieldset style='margin-top: -44px;'>
+												<input type='submit' value='' style='height: 20px;
+												width: 20px;
+												margin-left: 50px;
+												margin-top: 35px;
+												background-image: url(./img/less.png);
+												background-size: cover;
+												background-color: transparent;
+												border: none;'>
+											</fieldset>
+										</form></td>
+								</tr><tr onclick='alert(this.getElementsByTagName('td')[0].innerHTML);alert(this.innerHTML);'>
+										<td>Cebolla morada</td>
+										<td>1000gr</td>
+										<td style='padding:0px;'>
+										<form action='./php/borrarIngre.php' method='POST'>
+											<fieldset style='display: none;'>
+												<input type='text' name='bi' value=7>
+											</fieldset>
+											<fieldset style='display: none;'>
+												<input type='text' name='biip' value='Cebolla morada'>
+											</fieldset>
+											<fieldset style='margin-top: -44px;'>
+												<input type='submit' value='' style='height: 20px;
+												width: 20px;
+												margin-left: 50px;
+												margin-top: 35px;
+												background-image: url(./img/less.png);
+												background-size: cover;
+												background-color: transparent;
+												border: none;'>
+											</fieldset>
+										</form></td>
+								</tr><tr onclick='alert(this.getElementsByTagName('td')[0].innerHTML);alert(this.innerHTML);'>
+										<td>Tomate deshidratado</td>
+										<td>950gr</td>
+										<td style='padding:0px;'>
+										<form action='./php/borrarIngre.php' method='POST'>
+											<fieldset style='display: none;'>
+												<input type='text' name='bi' value=8>
+											</fieldset>
+											<fieldset style='display: none;'>
+												<input type='text' name='biip' value='Tomate deshidratado'>
+											</fieldset>
+											<fieldset style='margin-top: -44px;'>
+												<input type='submit' value='' style='height: 20px;
+												width: 20px;
+												margin-left: 50px;
+												margin-top: 35px;
+												background-image: url(./img/less.png);
+												background-size: cover;
+												background-color: transparent;
+												border: none;'>
+											</fieldset>
+										</form></td>
+								</tr><tr onclick='alert(this.getElementsByTagName('td')[0].innerHTML);alert(this.innerHTML);'>
+										<td>Cebolla caramelizada</td>
+										<td>900gr</td>
+										<td style='padding:0px;'>
+										<form action='./php/borrarIngre.php' method='POST'>
+											<fieldset style='display: none;'>
+												<input type='text' name='bi' value=9>
+											</fieldset>
+											<fieldset style='display: none;'>
+												<input type='text' name='biip' value='Cebolla caramelizada'>
+											</fieldset>
+											<fieldset style='margin-top: -44px;'>
+												<input type='submit' value='' style='height: 20px;
+												width: 20px;
+												margin-left: 50px;
+												margin-top: 35px;
+												background-image: url(./img/less.png);
+												background-size: cover;
+												background-color: transparent;
+												border: none;'>
+											</fieldset>
+										</form></td>
+								</tr><tr onclick='alert(this.getElementsByTagName('td')[0].innerHTML);alert(this.innerHTML);'>
+										<td>Aceituna negra</td>
+										<td>1450gr</td>
+										<td style='padding:0px;'>
+										<form action='./php/borrarIngre.php' method='POST'>
+											<fieldset style='display: none;'>
+												<input type='text' name='bi' value=10>
+											</fieldset>
+											<fieldset style='display: none;'>
+												<input type='text' name='biip' value='Aceituna negra'>
+											</fieldset>
+											<fieldset style='margin-top: -44px;'>
+												<input type='submit' value='' style='height: 20px;
+												width: 20px;
+												margin-left: 50px;
+												margin-top: 35px;
+												background-image: url(./img/less.png);
+												background-size: cover;
+												background-color: transparent;
+												border: none;'>
+											</fieldset>
+										</form></td>
+								</tr><tr onclick='alert(this.getElementsByTagName('td')[0].innerHTML);alert(this.innerHTML);'>
+										<td>Camarón</td>
+										<td>1200gr</td>
+										<td style='padding:0px;'>
+										<form action='./php/borrarIngre.php' method='POST'>
+											<fieldset style='display: none;'>
+												<input type='text' name='bi' value=12>
+											</fieldset>
+											<fieldset style='display: none;'>
+												<input type='text' name='biip' value='Camarón'>
+											</fieldset>
+											<fieldset style='margin-top: -44px;'>
+												<input type='submit' value='' style='height: 20px;
+												width: 20px;
+												margin-left: 50px;
+												margin-top: 35px;
+												background-image: url(./img/less.png);
+												background-size: cover;
+												background-color: transparent;
+												border: none;'>
+											</fieldset>
+										</form></td>
+								</tr><tr>
+							<td colspan='3'> <div id='btnagregarI'>
+							Agregar
+							</div> </td>
+						</tr>
+			</tbody>
+		</table>
+	</div>
+
+
+	<script type="text/javascript">
+		var si=false;
+		window.addEventListener('load',function (argument) {
+			document.getElementById("btnmodificar").addEventListener('click',function(){
+			var div=document.getElementById('alertamod');
+			if(si){
+				div.className ="";
+				si=false;
+				div.style.display="none";
+			}else{
+				div.style.display="block";
+				div.className +="iniciar";
+				si=true;
+			}
+		});
+		document.getElementById("cerrarmod").addEventListener('click',function(){
+			var div=document.getElementById('alertamod');
+			div.className ="";
+			si=false;
+			div.style.display="none";
+		});
+		});
+	</script>
+	<script type="text/javascript">
+		var si=false;
+		window.addEventListener('load',function (argument) {
+			document.getElementById("btnagregarIn").addEventListener('click',function(){
+			var div=document.getElementById('alertaI');
+			if(si){
+				div.className ="";
+				si=false;
+				div.style.display="none";
+			}else{
+				div.style.display="block";
+				div.className +="iniciar";
+				si=true;
+			}
+		});
+		document.getElementById("cerrarI").addEventListener('click',function(){
+			var div=document.getElementById('alertaI');
+			div.className ="";
+			si=false;
+			div.style.display="none";
+		});
+		});
+	</script>
+
+	<script type="text/javascript">
+		var si=false;
+		window.addEventListener('load',function (argument) {
+			document.getElementById("btnagregarI").addEventListener('click',function(){
+			var div=document.getElementById('alertaI');
+			if(si){
+				div.className ="";
+				si=false;
+				div.style.display="none";
+			}else{
+				div.style.display="block";
+				div.className +="iniciar";
+				si=true;
+			}
+		});
+		document.getElementById("cerrarI").addEventListener('click',function(){
+			var div=document.getElementById('alertaI');
+			div.className ="";
+			si=false;
+			div.style.display="none";
+		});
+		});
+	</script>
+
+	<script type="text/javascript">
+		var si=false;
+		window.addEventListener('load',function (argument) {
+			document.getElementById("btnagregar22").addEventListener('click',function(){
+			var div=document.getElementById('alerta22');
+			if(si){
+				div.className ="";
+				si=false;
+				div.style.display="none";
+			}else{
+				div.style.display="block";
+				div.className +="iniciar";
+				si=true;
+			}
+		});
+		document.getElementById("cerrar22").addEventListener('click',function(){
+			var div=document.getElementById('alerta22');
+			div.className ="";
+			si=false;
+			div.style.display="none";
+		});
+		});
+	</script>
+
+	<script type="text/javascript">
+		var si=false;
+		window.addEventListener('load',function (argument) {
+			document.getElementById("btnagregar").addEventListener('click',function(){
+			var div=document.getElementById('alerta');
+			if(si){
+				div.className ="";
+				si=false;
+				div.style.display="none";
+			}else{
+				div.style.display="block";
+				div.className +="iniciar";
+				si=true;
+			}
+		});
+		document.getElementById("cerrar").addEventListener('click',function(){
+			var div=document.getElementById('alerta');
+			div.className ="";
+			si=false;
+			div.style.display="none";
+		});
+		});
+	</script>
+	<script type="text/javascript">
+		var si=false;
+		window.addEventListener('load',function (argument) {
+		document.getElementById("btnagregarCat").addEventListener('click',function(){
+			var div=document.getElementById('alertaCat');
+			if(si){
+				div.className ="";
+				si=false;
+				div.style.display="none";
+			}else{
+				div.style.display="block";
+				div.className +="iniciar";
+				si=true;
+			}
+		});
+		document.getElementById("cerrarCat").addEventListener('click',function(){
+			var div=document.getElementById('alertaCat');
+			div.className ="";
+			si=false;
+			div.style.display="none";
+		});
+		});
+	</script>
+	<script type="text/javascript">
+		var si=false;
+		window.addEventListener('load',function (argument) {
+		document.getElementById("refresh").addEventListener('click',function(){
+			var div=document.getElementById('modificar');
+			if(si){
+				div.className ="";
+				si=false;
+				div.style.display="none";
+			}else{
+				div.style.display="block";
+				div.className +="iniciar";
+				si=true;
+			}
+		});
+		document.getElementById("cerrarMod").addEventListener('click',function(){
+			var div=document.getElementById('modificar');
+			div.className ="";
+			si=false;
+			div.style.display="none";
+		});
+		});
+	</script>
+	<script type="text/javascript">
+		var si=false;
+		window.addEventListener('load',function (argument) {
+		document.getElementById("modificarProducto").addEventListener('click',function(){
+			var div=document.getElementById('panelModProd');
+			if(si){
+				div.className ="";
+				si=false;
+				div.style.display="none";
+			}else{
+				div.style.display="block";
+				div.className +="iniciar";
+				si=true;
+			}
+		});
+		document.getElementById("cerrarModProd").addEventListener('click',function(){
+			var div=document.getElementById('panelModProd');
+			div.className ="";
+			si=false;
+			div.style.display="none";
+		});
+		});
+	</script>
+	<script type="text/javascript">
+		var si=false;
+		window.addEventListener('load',function (argument) {
+		document.getElementById("modificarCategoria").addEventListener('click',function(){
+			var div=document.getElementById('panelModCat');
+			if(si){
+				div.className ="";
+				si=false;
+				div.style.display="none";
+			}else{
+				div.style.display="block";
+				div.className +="iniciar";
+				si=true;
+			}
+		});
+		document.getElementById("cerrarModCat").addEventListener('click',function(){
+			var div=document.getElementById('panelModCat');
+			div.className ="";
+			si=false;
+			div.style.display="none";
+		});
+		});
+	</script>
+	<script type="text/javascript">
+		var si=false;
+		window.addEventListener('load',function (argument) {
+			document.getElementById("btnagregarop").addEventListener('click',function(){
+			var div=document.getElementById('alertaop');
+			if(si){
+				div.className ="";
+				si=false;
+				div.style.display="none";
+			}else{
+				div.style.display="block";
+				div.className +="iniciar";
+				si=true;
+			}
+		});
+		document.getElementById("cerrarop").addEventListener('click',function(){
+			var div=document.getElementById('alertaop');
+			div.className ="";
+			si=false;
+			div.style.display="none";
+		});
+		});
+	</script>
+	<script type="text/javascript" src="./js/sesion.js"></script>
+</body>
+</html>

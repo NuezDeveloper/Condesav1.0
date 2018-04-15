@@ -1,0 +1,213 @@
+@import url('https://fonts.googleapis.com/css?family=Titillium+Web');
+@import url('https://fonts.googleapis.com/css?family=Roboto');
+*{
+  padding: 0px;
+  margin: 0px;
+  font-family: 'Roboto';
+}
+/*
+h1{
+  color: white;
+  text-align: center;
+  font-family: 'Titillium Web', sans-serif;
+}
+*/
+#login{
+  background-image: url(../img/imglogin.jpg);
+  background-size: cover;
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -500;
+  -webkit-filter: blur(10px);
+  -moz-filter: blur(10px);
+  -o-filter: blur(10px);
+  -ms-filter: blur(10px);
+  filter: blur(10px);
+}
+/*
+.formulario{
+  width: 60%;
+  height: 60%;
+  background-color: rgba(177, 181, 188,.6);
+  margin-top: 15%;
+  margin-left: 20%;
+}
+*/
+input[type="submit"]{
+  border-bottom: none;
+  font-size: 13px;
+  color: white;
+  background-color: black;
+  width: 50%;
+  margin-left: 25%;
+  border-radius: 15px;
+  padding: 10px;
+}
+input[type="submit"]:hover{
+  background-color: rgba(0, 0, 0,.9);
+  cursor: pointer;
+}
+form{
+  margin-top: 20%;
+}
+* { box-sizing:border-box;border: none;}
+.container{
+  font-family:'Roboto';
+  width:600px;
+  margin:30px auto 0;
+  display:block;
+  padding:10px 50px 50px;
+  margin-top: 10%;
+}
+
+.group{
+  position:relative;
+  margin-bottom:45px;
+  width: 50%;
+  margin-left: 20%;
+}
+.group:first-child{
+  margin-top: 15%;
+}
+input{
+  font-size:15px;
+  padding:10px 10px 10px 5px;
+  display:block;
+  width:70%;
+  background: transparent;
+  border-bottom: 1px solid black;
+  padding-bottom: 4px;
+  color: rgba(0,0,0,.7);
+}
+input:focus{ outline:none; }
+
+/* LABEL ======================================= */
+label{
+  color: black;
+  font-size:18px;
+  font-weight:normal;
+  position:absolute;
+  pointer-events:none;
+  left:5px;
+  top:10px;
+  transition:0.2s ease all;
+  -moz-transition:0.2s ease all;
+  -webkit-transition:0.2s ease all;
+}
+
+/* active state */
+input:focus ~ label, input:valid ~ label 		{
+  top:-20px;
+  font-size:15px;
+  color:black;
+  border: none;
+}
+
+/* BOTTOM BARS ================================= */
+.bar 	{ position:relative; display:block; width:300px; }
+.bar:before, .bar:after 	{
+  content:'';
+  height:2px;
+  width:0;
+  bottom:2px;
+  position:absolute;
+  background-color: rgba(137, 143, 153,.7);
+  transition:0.2s ease all;
+  -moz-transition:0.2s ease all;
+  -webkit-transition:0.2s ease all;
+}
+.bar:before {
+  left:50%;
+}
+.bar:after {
+  right:50%;
+}
+
+/* active state */
+input:focus ~ .bar:before, input:focus ~ .bar:after {
+  width:70%;
+  left: 0%;
+}
+
+/* HIGHLIGHTER ================================== */
+.highlight {
+  position:absolute;
+  height:60%;
+  width:120%;
+  top:25%;
+  left:0;
+  pointer-events:none;
+  opacity:0.5;
+}
+
+/* active state */
+input:focus ~ .highlight {
+  -webkit-animation:inputHighlighter 0.3s ease;
+  -moz-animation:inputHighlighter 0.3s ease;
+  animation:inputHighlighter 0.3s ease;
+}
+
+/* ANIMATIONS ================ */
+@-webkit-keyframes inputHighlighter {
+	from { background-color: rgba(137, 143, 153,.7); }
+  to 	{ width:0; background:transparent; }
+}
+@-moz-keyframes inputHighlighter {
+	from { background-color: rgba(137, 143, 153,.7); }
+  to 	{ width:0; background:transparent; }
+}
+@keyframes inputHighlighter {
+	from { background-color: rgba(137, 143, 153,.7); }
+  to 	{ width:0; background:transparent; }
+}
+
+body{
+  background-color: black;
+}
+.logo{
+  width: 100%;
+	height: 25%;
+	background-image: url(../img/logo.jpg);
+  background-size: cover;
+	margin: 0px;
+	background-color: #05060A;
+}
+
+.panel{
+  height: 60%;
+  width: 60%;
+  margin-left: 20%;
+  margin-top: 10%;
+  background-color: white;
+  -webkit-box-shadow: 0px 2px 26px -5px rgba(0,0,0,0.75);
+  -moz-box-shadow: 0px 2px 26px -5px rgba(0,0,0,0.75);
+  box-shadow: 0px 2px 26px -5px rgba(0,0,0,0.75);
+}
+.formulario{
+  height: 100%;
+  width: 40%;
+  float: left;
+}
+.imagen{
+  height: 100%;
+  width: 60%;
+  float: left;
+  background-image: url(../img/imglogin.jpg);
+  background-size: cover;
+}
+.imagen button{
+  margin-right: 5px;
+  margin-top: 3px;
+  float: right;
+  background-color: transparent;
+  border: none;
+  color: white;
+  font-size: 20px;
+  font-family: 'Roboto';
+}
+.imagen button:hover{
+  cursor: pointer;
+}

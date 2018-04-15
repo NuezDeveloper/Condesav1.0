@@ -1,0 +1,52 @@
+div.izq #menu * { 
+  list-style:none;
+  font-size: 15px;
+  font-family: 'roboto';
+  color: white;
+  margin-left: 30px;
+}
+div.izq #menu li{ 
+  line-height:180%;
+}
+div.izq #menu label{ 
+  font-weight: bold;
+}
+div.izq #menu li a{
+  color:white; 
+  text-decoration:none;
+  margin-left: -10px;
+}
+div.izq #menu li a:before{ 
+  color:white; 
+  margin-right:14px;
+}
+div.izq #menu li a:hover{ 
+  text-decoration: underline;
+  cursor: pointer;
+}
+div.izq #menu input[name="list"] {
+  position: absolute;
+  left: -1000em;
+  font-size: 15px;
+}
+div.izq #menu label:before{ 
+  content:"\025b8"; 
+  margin-right:4px;
+}
+div.izq #menu input:checked ~ label:before{ 
+  content:"\025be";
+}
+div.izq #menu .interior{
+  display: none;
+}
+div.izq #menu input:checked ~ ul{
+  display:block;
+}
+div.izq div{
+	margin-left: 30px;
+	margin-top: 30px;
+}
+
+div.izq #menu input[name="list"]:hover{
+  cursor: pointer;
+}

@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>La Condesa</title>
+	<link rel="stylesheet" href="./css/font-awesome.min.css">
+	<link rel="stylesheet" type="text/css" href="./css/stylesheet.css">
+	<link rel="stylesheet" type="text/css" href="./css/listas.css">
+	</head>
+<body>
+	<div class="izq">
+		<div class="logo">
+		</div>
+		<form class="" action="./php/agregarProdClave.php" method="POST">
+			<fieldset style="margin-left:-20px;margin-top:-14px;">
+				<input type="search" name="clave" placeholder="Buscar">
+			</fieldset>
+			<fieldset style="display:none;">
+				<input type="text" name="mesa" value=1>
+			</fieldset>
+			<fieldset style="display:none;">
+				<input type="submit" value="">
+			</fieldset>
+		</form>
+		<div style="margin-top:15px;">
+			<ul id="menu">
+				<li><input type='checkbox' name='list' id='nivel1-1'><label for='nivel1-1'>Pizzas</label><ul class='interior'>
+										<li><a href='tablas.php' name='0'>Personalizada</a>
+										</li>
+									</ul><ul class='interior'>
+											<li><a href='ordenes.php?id=pMexicana&clave=1&mesa=1 'name='1'>Mexicana</a>
+											</li>
+										</ul><ul class='interior'>
+											<li><a href='ordenes.php?id=pCondesa&clave=4&mesa=1 'name='4'>La Condesa</a>
+											</li>
+										</ul><ul class='interior'>
+											<li><a href='ordenes.php?id=pEspecial&clave=5&mesa=1 'name='5'>Especial</a>
+											</li>
+										</ul><ul class='interior'>
+											<li><a href='ordenes.php?id=pCasa&clave=6&mesa=1 'name='6'>  casera</a>
+											</li>
+										</ul><ul class='interior'>
+											<li><a href='ordenes.php?id=pAmericana&clave=11&mesa=1 'name='11'>Americana</a>
+											</li>
+										</ul></li><li><input type='checkbox' name='list' id='nivel1-2'><label for='nivel1-2'>Pastas</label><ul class='interior'>
+										<li><a href='tablas.php' name='0'>Personalizada</a>
+										</li>
+									</ul><ul class='interior'>
+											<li><a href='ordenes.php?id=pastaAl&clave=7&mesa=1 'name='7'>Pasta Alfreado</a>
+											</li>
+										</ul><ul class='interior'>
+											<li><a href='ordenes.php?id=pastaCasa&clave=8&mesa=1 'name='8'>Pasta Casa</a>
+											</li>
+										</ul></li><li><input type='checkbox' name='list' id='nivel1-3'><label for='nivel1-3'>Ensaladas</label><ul class='interior'>
+										<li><a href='tablas.php' name='0'>Personalizada</a>
+										</li>
+									</ul><ul class='interior'>
+											<li><a href='ordenes.php?id=ensManzana&clave=3&mesa=1 'name='3'>Ensalada Manzana</a>
+											</li>
+										</ul></li><li><input type='checkbox' name='list' id='nivel1-4'><label for='nivel1-4'>Bebidas</label><ul class='interior'>
+										<li><a href='tablas.php' name='0'>Personalizada</a>
+										</li>
+									</ul><ul class='interior'>
+											<li><a href='ordenes.php?id=aguaroja&clave=2&mesa=1 'name='2'>Frutos Rojos</a>
+											</li>
+										</ul><ul class='interior'>
+											<li><a href='ordenes.php?id=coca&clave=9&mesa=1 'name='9'>Coca-Cola</a>
+											</li>
+										</ul><ul class='interior'>
+											<li><a href='ordenes.php?id=fanta&clave=10&mesa=1 'name='10'>Fanta</a>
+											</li>
+										</ul></li><li><input type='checkbox' name='list' id='nivel1-5'><label for='nivel1-5'>Postres</label><ul class='interior'>
+										<li><a href='tablas.php' name='0'>Personalizada</a>
+										</li>
+									</ul></li><li><input type='checkbox' name='list' id='nivel1-6'><label for='nivel1-6'>Entradas</label><ul class='interior'>
+										<li><a href='tablas.php' name='0'>Personalizada</a>
+										</li>
+									</ul></li><li><input type='checkbox' name='list' id='nivel1-7'><label for='nivel1-7'>Otro</label><ul class='interior'>
+										<li><a href='tablas.php' name='0'>Personalizada</a>
+										</li>
+									</ul><ul class='interior'>
+											<li><a href='ordenes.php?id=xd&clave=12&mesa=1 'name='12'>Test</a>
+											</li>
+										</ul></li>
+			</ul>
+		</div>
+	</div>
+	<nav id="header">
+	  <ul>
+	    <li style="background-color: #212121; height: 25px;padding-top:5px; border-top-right-radius: 10px; border-top-left-radius: 10px; margin-left: 5px;"><a href="" style="font-weight: bold; color: white;">脫rdenes</a></li>
+	    <li><a href="./inventario.php?id=0&clave=0&mesa=0">Inventario</a></li>
+	    <li><a href="./ventas.php?id=0">Ventas</a></li>
+	    <li><a href="./cortes.php?fecha=CURDATE()">Corte</a></li>
+	    <li><a href="">Usuarios</a></li>
+	    <li><a href="" id="mostrarSesion">Sesi贸n</a></li>
+	  </ul>
+		<div id="sesion">
+  <ul>
+    <li><a>Cerrar sesi贸n</a></li>
+    <li><a>Cerrar sistema</a></li>
+    <li><a>Hacer corte</a></li>
+  </ul>
+</div>
+	</nav>
+	<div class="miniheader" style="background-color: #212121; height: 180px; margin-top: -120px;">
+				<form action="./php/agregarProd.php" method="POST">
+			<fieldset style="display: none;">
+				<input type="text" name="producto" value=0>
+			</fieldset>
+			<fieldset style="display: none;">
+				<input type="text" name="mesa" value=1>
+			</fieldset>
+			<fieldset>
+				<input type="submit" value="" id="btnplus">
+			</fieldset>
+		</form>
+		<form action="./php/borrarProd.php" method="POST">
+			<fieldset style="display: none;">
+				<input type="text" name="producto2" value=0>
+			</fieldset>
+			<fieldset style="display: none;">
+				<input type="text" name="mesa2" value=1>
+			</fieldset>
+			<fieldset>
+				<input type="submit" value="" id="btnless">
+			</fieldset>
+		</form>
+	</div>
+	<div id="container">
+				<div id="mesas">
+			<a href='./ordenes.php?id=0&clave=0&mesa=1'>Mesa 2</a>			<button id="btnagregarorden"></button>
+		</div>
+		<div id="alerta" style="top: 20px;">
+			<button id="cerrar">
+				<i class="fa fa-times"></i>
+			</button>
+			<h4>Agregar Orden</h4>
+			<form action="./php/insref.php" method="POST">
+				<fieldset>
+					<label>Mesa</label><br>
+					<select name="mesa"style="font-size:20px;padding: 5px 8px;width: 100%;height:30px;border: none;box-shadow: none;background: transparent;background-image: none;-webkit-appearance: none;">
+						<option value="llevar">LLEVAR</option>
+						<option value="1">Mesa 1</option>
+						<option value="2">Mesa 2</option>
+						<option value="3">Mesa 3</option>
+						<option value="4">Mesa 4</option>
+						<option value="5">Mesa 5</option>
+						<option value="6">Mesa 6</option>
+						<option value="7">Mesa 7</option>
+						<option value="8">Mesa 8</option>
+						<option value="9">Mesa 9</option>
+						<option value="10">Mesa 10</option>
+						<option value="11">Mesa 11</option>
+						<option value="12">Mesa 12</option>
+						<option value="13">Mesa 13</option>
+						<option value="14">Mesa 14</option>
+						<option value="15">Mesa 15</option>
+						<option value="16">Mesa 16</option>
+						<option value="17">Mesa 17</option>
+						<option value="18">Mesa 18</option>
+						<option value="19">Mesa 19</option>
+						<option value="20">Mesa 20</option>
+					</select>
+				</fieldset>
+				<fieldset>
+					<label>Mesero</label><br>
+					<select name="mesero" style="font-size:20px;padding: 5px 8px;width: 100%;height:30px;border: none;box-shadow: none;background: transparent;background-image: none;-webkit-appearance: none;">
+						<option value='Jes鷖 Alonso'>Jes鷖 Alonso</option><option value='Lucero Alondra'>Lucero Alondra</option><option value='Pablo'>Pablo</option>					</select>
+				</fieldset>
+				<fieldset>
+					<label>Referencia</label><br>
+					<input type="text" name="referencia" >
+				</fieldset>
+				<fieldset>
+					<button style="margin-top:20px; margin-left: 40%;" type="submit" class="btn">Agregar</button>
+				</fieldset>
+			</form>
+		</div>
+		<button id="btnCobrar">COBRAR</button>
+		<div id="cobrar" style="top: 20px;">
+			<button id="cerrarCobrar">
+				<i class="fa fa-times"></i>
+			</button>
+			<h4>Cobrar Orden</h4>
+			<form action="./php/cobrar.php" method="POST">
+				<div id="tabla" style="margin-left:0px;margin-top:20px;width:100%;">
+					<table class="flat-table">
+					  <tbody>
+					    <tr>
+					      <th>C贸digo</th>
+					      <th>Producto</th>
+					      <th>Precio</th>
+					      <th>Cantidad</th>
+					      <th>Subtotal</th>
+					    </tr>
+					    					  </tbody>
+					</table>
+				</div>
+				<fieldset style="width:30%; margin-top: -10px; float: left;">Pago:
+					<input id="txtPay" onkeyup="asd()" onkeypress="exec()" type="number" name="txtPagar" value="" style="border: 1px solid red; text-align: center;">
+				</fieldset>
+				<fieldset style="margin-left:40%;float: left;margin-top:-10px;">Cambio:
+					<label id="lblcambio">0</label>
+				</fieldset>
+				<br>
+				<fieldset style="display: none;">
+					<input type="text" name="id" value=1>
+				</fieldset>
+				<br>
+				<br>
+				<fieldset>
+					<button style="margin-top: 15px; align:center; background-color:green;" type="submit" class="btn" id="realizarPago">Cobrar</button>
+				</fieldset>
+			</form>
+		</div>
+		<button id="btnCancelar">CANCELAR</button>
+		<div id="cancelar" style="top: 20px;">
+			<button id="cerrarCancelar">
+				<i class="fa fa-times"></i>
+			</button>
+			<h4>Desea cancelar la orden de la mesa 2?</h4>
+			<form action="./php/borrarMesa.php" method="POST">
+				<fieldset style="display: none;">
+					<input type="text" name="borrar" value=1>
+				</fieldset>
+				<fieldset>
+					<button style="margin-top:20px; margin-left: 43%;background-color:red;" type="submit" class="btn">Cancelar</button>
+				</fieldset>
+			</form>
+		</div>
+		<button id="btnEnviar">ENVIAR</button>
+		<hr id="hr">
+		<button id="refresh"></button>
+		<div id="modificarMesa" style="top: 20px;">
+			<button id="cerrarModificarMesa">
+				<i class="fa fa-times"></i>
+			</button>
+			<h4>Modificar mesa 2</h4>
+			<form action="./php/modificarMesa.php" method="POST">
+				<fieldset style="display: none;">
+					<input type="text" name="orden" value=1>
+				</fieldset>
+				<fieldset>
+					<label>Mesa</label><br>
+					<select name="mesa"style="font-size:20px;padding: 5px 8px;width: 100%;height:30px;border: none;box-shadow: none;background: transparent;background-image: none;-webkit-appearance: none;">
+						<option value="1">Mesa 1</option>
+						<option value="2">Mesa 2</option>
+						<option value="3">Mesa 3</option>
+						<option value="4">Mesa 4</option>
+						<option value="5">Mesa 5</option>
+						<option value="6">Mesa 6</option>
+						<option value="7">Mesa 7</option>
+						<option value="8">Mesa 8</option>
+						<option value="9">Mesa 9</option>
+						<option value="10">Mesa 10</option>
+						<option value="11">Mesa 11</option>
+						<option value="12">Mesa 12</option>
+						<option value="13">Mesa 13</option>
+						<option value="14">Mesa 14</option>
+						<option value="15">Mesa 15</option>
+						<option value="16">Mesa 16</option>
+						<option value="17">Mesa 17</option>
+						<option value="18">Mesa 18</option>
+						<option value="19">Mesa 19</option>
+						<option value="20">Mesa 20</option>
+					</select>
+				</fieldset>
+				<fieldset>
+					<label>Mesero</label><br>
+					<select name="mesero" style="font-size:20px;padding: 5px 8px;width: 100%;height:30px;border: none;box-shadow: none;background: transparent;background-image: none;-webkit-appearance: none;">
+						<option value='Jes鷖 Alonso'>Jes鷖 Alonso</option><option value='Lucero Alondra'>Lucero Alondra</option><option value='Pablo'>Pablo</option>					</select>
+				</fieldset>
+				<fieldset>
+					<label>Referencia</label><br>
+					<input type="text" name="referencia" >
+				</fieldset>
+				<fieldset>
+					<button style="margin-top:20px; margin-left: 43%;background-color:green;" type="submit" class="btn">Aceptar</button>
+				</fieldset>
+			</form>
+		</div>
+
+		<div id='mostrarDatos'><label class='labels' style='margin-top: -260px; font-weight: bold; margin-left: 30px;'>Orden</label>
+						<label class='labels' style='margin-top: -240px; font-size: 15px; margin-left: 40px;'>1</label>
+						<label class='labels' style='margin-top: -205px; font-weight: bold; margin-left: 30px;'>Mesa</label>
+						<label class='labels' style='margin-top: -180px; font-size: 15px; margin-left: 40px;'>2</label>
+						<label class='labels' style='margin-top: -150px; font-weight: bold; margin-left: 30px;'>Mesero</label>
+						<label class='labels' style='margin-top: -125px; font-size: 15px; margin-left: 40px;'>Pablo</label>
+						<label class='labels' style='margin-top: -95px; font-weight: bold; margin-left: 30px;'>Referencia</label>
+						<label class='labels' style='margin-top: -70px; font-size: 15px; margin-left: 40px;'>rulo</label>
+						<label class='labels' style='margin-top: 5px; font-weight: bold; margin-left: 30px;'>Total</label><label id='lbltotal' class='labels' style='margin-top: 5px; font-size: 15px; margin-left: 95px;'></label>
+						</div>		<div id="tabla">
+			<table class="flat-table">
+			  <tbody>
+			    <tr>
+			      <th>C贸digo</th>
+			      <th>Producto</th>
+			      <th>Precio</th>
+			      <th>Cantidad</th>
+			      <th>Subtotal</th>
+						<th>Cambiar</th>
+			    </tr>
+			    			  </tbody>
+			</table>
+		</div>
+	</div>
+	<script type="text/javascript">
+		$(document).ready(function(){
+
+		});
+	</script>
+	<script type="text/javascript">
+		function asd(e){
+			var txt = document.getElementById('txtPay').value;
+			var tot = parseInt(document.getElementById('lbltotal').innerHTML);
+			var t = parseInt(txt);
+			if(t-tot<0){
+				document.getElementById('lblcambio').innerText="INCOMPLETO";
+				document.getElementById('realizarPago').style.display='none';
+			}else{
+				document.getElementById('lblcambio').innerText="$"+(t-tot);
+			}
+			if(t>=tot){
+				document.getElementById('txtPay').style.border="1px solid green";
+				document.getElementById('realizarPago').style.display='block';
+				document.getElementById('realizarPago').type="submit";
+			}else{
+				document.getElementById('txtPay').style.border="1px solid red";
+				document.getElementById('realizarPago').type="button";
+			}
+			if(txt==""){
+				document.getElementById('lblcambio').innerText="";
+			}
+		}
+	</script>
+	<script type="text/javascript">
+		var si=false;
+		window.addEventListener('load',function (argument) {
+			document.getElementById("btnagregarorden").addEventListener('click',function(){
+			var div=document.getElementById('alerta');
+			if(si){
+				div.className ="";
+				si=false;
+				div.style.display="none";
+			}else{
+				div.style.display="block";
+				div.className +="iniciar";
+				si=true;
+			}
+		});
+		document.getElementById("cerrar").addEventListener('click',function(){
+			var div=document.getElementById('alerta');
+			div.className ="";
+			si=false;
+			div.style.display="none";
+		});
+		});
+	</script>
+	<script type="text/javascript">
+    var si=false;
+    window.addEventListener('load',function (argument) {
+      document.getElementById("btnCobrar").addEventListener('click',function(){
+      var div=document.getElementById('cobrar');
+      if(si){
+        div.className ="";
+        si=false;
+        div.style.display="none";
+      }else{
+        div.style.display="block";
+        div.className +="iniciar";
+        si=true;
+				document.getElementById("txtPay").focus();
+      }
+    });
+    document.getElementById("cerrarCobrar").addEventListener('click',function(){
+      var div=document.getElementById('cobrar');
+      div.className ="";
+      si=false;
+      div.style.display="none";
+    });
+    });
+ </script>
+	<script type="text/javascript">
+	var si=false;
+	window.addEventListener('load',function (argument) {
+	  document.getElementById("btnCancelar").addEventListener('click',function(){
+	  var div=document.getElementById('cancelar');
+	  if(si){
+	    div.className ="";
+	    si=false;
+	    div.style.display="none";
+	  }else{
+	    div.style.display="block";
+	    div.className +="iniciar";
+	    si=true;
+	  }
+	});
+	document.getElementById("cerrarCancelar").addEventListener('click',function(){
+	  var div=document.getElementById('cancelar');
+	  div.className ="";
+	  si=false;
+	  div.style.display="none";
+	});
+	});
+</script>
+ </script>
+	<script type="text/javascript">
+	var si=false;
+	window.addEventListener('load',function (argument) {
+	  document.getElementById("refresh").addEventListener('click',function(){
+	  var div=document.getElementById('modificarMesa');
+	  if(si){
+	    div.className ="";
+	    si=false;
+	    div.style.display="none";
+	  }else{
+	    div.style.display="block";
+	    div.className +="iniciar";
+	    si=true;
+	  }
+	});
+	document.getElementById("cerrarModificarMesa").addEventListener('click',function(){
+	  var div=document.getElementById('modificarMesa');
+	  div.className ="";
+	  si=false;
+	  div.style.display="none";
+	});
+	});
+</script>
+<script type="text/javascript" src="./js/jquery-3.2.1.min.js"></script>
+</body>
+</html>
